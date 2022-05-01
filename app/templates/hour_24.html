@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hour Control</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <style>
+        #map {
+            height: 40rem;
+            width: 60rem;
+            margin-left: 20%;
+          }
+          /* Optional: Makes the sample page fill the window. */
+          html,
+          body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+          }
+    </style>
+</head>
+<body>
+        <h1>Your Cars for selected Time Interval</h1>
+        <a href="home.html"></a><button onClick="geri()">Go Back</button>
+        
+        <div id="map"></div>
+        TIME
+        <div id="time" >
+          
+         
+         
+       </div>
+       <br>
+       CAR LATITUDE
+       <div id="car-lat">
+         
+         
+         
+       </div>
+       <br>
+       CAR LONGITUDE
+       <div id="car-lng">
+         
+         
+         
+       </div>
+       <br>  
+    <script>
+       
+        
+        let map;
+        var hour24='{{hour_24|safe}}';
+        var lat24='{{lat_24|safe}}';
+        var lng24='{{lng_24|safe}}';
+        
+       
+      
+        hour24=hour24.replace(/["]+/g, '');
+        hour24=hour24.replace("[","");
+        hour24=hour24.replace("]",'');
+        hour24=hour24.replace(/\s/g, '');
+        
+        hour24=hour24.split(",");
+      
+
+        lat24=lat24.replace(/["]+/g, '');
+        lat24=lat24.replace("[","");
+        lat24=lat24.replace("]", '');
+        lat24=lat24.replace(/\s/g, '');
+        lat24=lat24.split(",");
+       
+
+        lng24=lng24.replace(/["]+/g, '');
+        lng24=lng24.replace("[","");
+        lng24=lng24.replace("]", '');
+        lng24=lng24.replace(/\s/g, '');
+        lng24=lng24.split(",");
+       
+        for(var i=0;i<hour24.length;i++){
+            lat24[i]=Number(lat24[i]);
+            lng24[i]=Number(lng24[i]);
+        }
+
+
+
+
+
+        function initMap() {
+      
+            var flightPlanCoordinates;
+            map = new google.maps.Map(document.getElementById("map"), {
+              center: { lat: 59.4219, lng: 17.8221 },
+              zoom: 12,
+            });
+            for(var i=0;i<hour24.length;i++){
+                 flightPlanCoordinates = [
+                { lat: lat24[i], lng: lng24[i]},
+                { lat: lat24[i+1], lng: lng24[i+1] },
+          ];
+
+          const flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+          });
+
+          if(i==0){
+            const point1= {lat: lat24[i], lng: lng24[i]};
+            marker = new google.maps.Marker({
+            position: point1,
+            icon:"http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+          });
+          marker.setMap(map);
+          }
+          if(i==lat24.length-1){
+            const point1= {lat: lat24[i], lng: lng24[i]};
+            marker = new google.maps.Marker({
+            position: point1,
+            icon:"http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+          });
+          marker.setMap(map);
+          }
+          
+
+          flightPath.setMap(map);
+            }
+            
+         
+            
+          
+        }
+        
+        document.getElementById("time").innerHTML=hour24;
+        document.getElementById("car-lat").innerHTML=lat24;
+        document.getElementById("car-lng").innerHTML=lng24;
+          
+
+
+         
+
+    </script>
+    
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIs3GU0KvLEdCCQN4spfL8zxgceUbUhsg&callback=initMap&v=weekly"
+      async
+    ></script>
+    <script type="text/javascript">
+
+      function geri(){
+  
+        history.back()
+  
+      }
+  
+    </script>
+
+    
+
+
+
+</body>
+</html>

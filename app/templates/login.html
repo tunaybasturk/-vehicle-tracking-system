@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page {{warning_counter}}</title>
+    
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='base.css')}}">
+    <img src="https://i.hizliresim.com/3emc268.png" id="bg" alt=""> 
+</head>
+<body>
+    
+    <div class="flex-container">
+        <div class="login">
+            
+            <div class="input">
+                
+             
+
+                <form method="POST" action="">
+                    <input id="kullanıcı-adı"name="username" type="text" placeholder="Enter Your Username">
+                    <input id="şifre" type="password"name="password" placeholder="Enter Your Password">
+                    <input id="giriş" type="submit" value="Login"> 
+                                       
+                </form>
+               
+                
+            </div>
+            
+        </div>
+       
+      </div>
+    
+</body>
+
+<script>
+
+    window.onload = function() {
+        var warning = '{{ warning_counter }}';
+        
+        if(warning>2){
+            alert(warning+" kere hatalı giriş yaptınız...")
+            
+        }
+      };
+
+    
+    
+  </script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

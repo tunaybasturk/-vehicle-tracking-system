@@ -1,0 +1,90 @@
+* {
+    padding: 0px;
+    margin: 0px;
+ }
+
+.header{
+    width: 100%;
+    height: 4rem;
+    background-color: rgb(12, 94, 245);
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .car1{
+    height: 2rem;
+    width: 4rem;
+    background-color: rgb(255, 37, 8);
+    margin-top: 1rem;
+  }
+
+  .car2{
+    height: 2rem;
+    width: 4rem;
+    background-color: rgb(248, 19, 229);
+    margin-top: 1rem;
+  }
+
+  #map {
+    height: 44rem;
+    width: 60rem;
+    
+  }
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  /* Optional: Makes the sample page fill the window. */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  h1{
+     padding-top: 0.75rem;
+  }
+  .table-map{
+    display: flex;
+    justify-content: center;
+
+  }
+
+#slogan{
+  margin-top: 1.25rem;
+}
+#start{
+  margin-top: 1.25rem;
+  color: rgb(27, 240, 27);
+  font-size: 20px;
+  font-weight:bold; 
+}
+#end{
+  margin-top: 1.25rem;
+  color: rgb(255, 6, 6);
+  font-size: 20px;
+  font-weight:bold; 
+}
+.car1:hover{
+  background-color: white;
+  color: black;
+}
+.car2:hover{
+  background-color: white;
+  color: black;
+}
+
+#cars{
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+#cars2{
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+#logout{
+  margin-top: 1.25rem;
+  font-size: 20px;
+}
